@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://kvghsdx4kcrp"]
+
+[ext_resource type="Script" uid="uid://d0xdmeskn3fj7" path="res://Scripts/chunk.gd" id="1_1rwf7"]
+[ext_resource type="PackedScene" uid="uid://dxlwwrrjopqwd" path="res://models/untitled.fbx" id="1_a67yp"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_g4v7s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(1, 7.633911, 27.167084)
+
+[node name="Chunk1" type="Node3D" unique_id=1073893648]
+script = ExtResource("1_1rwf7")
+
+[node name="Mesh" parent="." unique_id=1165573163 instance=ExtResource("1_a67yp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=35496223]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2005113152]
+shape = SubResource("WorldBoundaryShape3D_g4v7s")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1062998170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.048953, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=915804792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3549223, -4.0537615, 4.30394)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=365715003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5168695, 6.048953, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=890285065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9564652, -4.0537615, 4.30394)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=723945229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.728636, 0)
+aabb = AABB(-11.463427, -5.5210395, -9.922132, 22.926853, 11.042079, 19.844263)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_not_visible"]
